@@ -34,12 +34,24 @@ try:
             # for registro in resultado:
             #     print(registro)
 
+            # #Insertar un registro
+            # sentencia = 'INSERT INTO PUBLIC.PERSON(name,last_name,email) VALUES (%s,%s, %s)'
+            # valores = ('Luis2', 'Diaz2', 'ldiaz2@mail.com')
+            # cursor.execute(sentencia, valores)
+            # # conexion.commit() Se utiliza cuando abrimos conexion sin with
+            # registers = cursor.rowcount
+            # print(f'Registros insertados {registers}')
+
+            # Insertar varios registros
             sentencia = 'INSERT INTO PUBLIC.PERSON(name,last_name,email) VALUES (%s,%s, %s)'
-            valores = ('Luis4', 'Diaz4', 'ldiaz4@mail.com')
-            cursor.execute(sentencia, valores)
-            # conexion.commit()
+            valores = (
+                ('Jhony', 'Renteria', 'jrenteria@mail.com'),
+                ('Pedro', 'Martinez', 'pmartinez@mail.com'),
+                ('Ana', 'Rios', 'arios@mail.com')
+            )
+            cursor.executemany(sentencia, valores)
             registers = cursor.rowcount
-            print(f'Registros insertados {registers}')
+            print(f'Registros insertados:  {registers}')
 
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)

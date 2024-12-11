@@ -7,8 +7,17 @@ try:
     cursor = conexion.cursor()
     sentencia = 'INSERT INTO PUBLIC.PERSON(name,last_name,email) VALUES (%s,%s, %s)'
     valores = (
-        ('Maria', 'Renteria', 'mrenteria@mail.com'),
-        ('Camila', 'Martinez', 'cmartinez@mail.com')
+        ('Jhony', 'Renteria', 'jrenteria@mail.com'),
+        ('Pedro', 'Maturana', 'pmaturana@mail.com'),
+        ('Ana', 'Rios', 'arios@mail.com')
+    )
+    cursor.executemany(sentencia, valores)
+
+    sentencia = 'UPDATE PUBLIC.PERSON SET name=%s, last_name=%s, email=%s WHERE id_person =%s'
+    valores = (
+        ('Jhony', 'Renteria', 'jrenteria@mail.com.co', 1),
+        ('Pedro', 'Maturana', 'pmaturana@mail.com.co', 2),
+        ('Ana', 'Rios', 'arios@mail.com.co', 3)
     )
     cursor.executemany(sentencia, valores)
     conexion.commit()

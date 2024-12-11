@@ -1,4 +1,5 @@
-select * from public.person;
+/*
+-- select * from public.person;
 
 -- insert into public.person(name,last_name,email) values
 -- ('Jhony','Renteria','jrenteria@mail.com'),
@@ -9,3 +10,6 @@ select * from public.person;
 
 -- ALTER SEQUENCE person_id_person_seq RESTART WITH 1;
 -- UPDATE public.person SET id_person=nextval('person_id_person_seq');
+*/
+
+select * from public.person;

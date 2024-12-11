@@ -43,15 +43,33 @@ try:
             # print(f'Registros insertados {registers}')
 
             # Insertar varios registros
-            sentencia = 'INSERT INTO PUBLIC.PERSON(name,last_name,email) VALUES (%s,%s, %s)'
+            # sentencia = 'INSERT INTO PUBLIC.PERSON(name,last_name,email) VALUES (%s,%s, %s)'
+            # valores = (
+            #     ('Jhony', 'Renteria', 'jrenteria@mail.com'),
+            #     ('Pedro', 'Martinez', 'pmartinez@mail.com'),
+            #     ('Ana', 'Rios', 'arios@mail.com')
+            # )
+            # cursor.executemany(sentencia, valores)
+            # registers = cursor.rowcount
+            # print(f'Registros insertados:  {registers}')
+
+            # Actualizar registros
+            # sentencia = 'UPDATE PUBLIC.PERSON SET name=%s, last_name=%s, email=%s WHERE id_person =%s'
+            # valores = ('JhonyEEE', 'RenteriaA', 'jrenteria@mail.com.CO',1)
+            # cursor.execute(sentencia, valores)
+            # registers = cursor.rowcount
+            # print(f'Registro Actualizado:  {registers}')
+
+            # Actualizar Multiples registros
+            sentencia = 'UPDATE PUBLIC.PERSON SET name=%s, last_name=%s, email=%s WHERE id_person =%s'
             valores = (
-                ('Jhony', 'Renteria', 'jrenteria@mail.com'),
-                ('Pedro', 'Martinez', 'pmartinez@mail.com'),
-                ('Ana', 'Rios', 'arios@mail.com')
+                ('Jhony', 'Renteria', 'jrenteria@mail.com',1),
+                ('Pedro', 'Maturana', 'pmaturana@mail.com',2),
+                ('Ana', 'Rios', 'arios@mail.com', 3)
             )
             cursor.executemany(sentencia, valores)
             registers = cursor.rowcount
-            print(f'Registros insertados:  {registers}')
+            print(f'Registros Actualizados:  {registers}')
 
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)

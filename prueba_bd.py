@@ -24,15 +24,22 @@ try:
             # resultado = cursor.fetchone()
             # print(resultado)
 
-            sentencia = 'SELECT id_person, name, last_name, email FROM PUBLIC.PERSON WHERE id_person IN %s'
-            # primary_keys = ((1,2,),)
-            entrada = input('Ingresa id \'s a buscar (separados por comas, Ej: 1,2,3): ')
-            primary_keys = (tuple(entrada.split(',')),)
-            cursor.execute(sentencia, primary_keys)
-            resultado = cursor.fetchall()
-            for registro in resultado:
-                print(registro)
+            # uso de fetchAll
+            # sentencia = 'SELECT id_person, name, last_name, email FROM PUBLIC.PERSON WHERE id_person IN %s'
+            # # primary_keys = ((1,2,),)
+            # entrada = input('Ingresa id \'s a buscar (separados por comas, Ej: 1,2,3): ')
+            # primary_keys = (tuple(entrada.split(',')),)
+            # cursor.execute(sentencia, primary_keys)
+            # resultado = cursor.fetchall()
+            # for registro in resultado:
+            #     print(registro)
 
+            sentencia = 'INSERT INTO PUBLIC.PERSON(name,last_name,email) VALUES (%s,%s, %s)'
+            valores = ('Luis4', 'Diaz4', 'ldiaz4@mail.com')
+            cursor.execute(sentencia, valores)
+            # conexion.commit()
+            registers = cursor.rowcount
+            print(f'Registros insertados {registers}')
 
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)

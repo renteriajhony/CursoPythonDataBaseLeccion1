@@ -61,15 +61,29 @@ try:
             # print(f'Registro Actualizado:  {registers}')
 
             # Actualizar Multiples registros
-            sentencia = 'UPDATE PUBLIC.PERSON SET name=%s, last_name=%s, email=%s WHERE id_person =%s'
-            valores = (
-                ('Jhony', 'Renteria', 'jrenteria@mail.com',1),
-                ('Pedro', 'Maturana', 'pmaturana@mail.com',2),
-                ('Ana', 'Rios', 'arios@mail.com', 3)
-            )
-            cursor.executemany(sentencia, valores)
+            # sentencia = 'UPDATE PUBLIC.PERSON SET name=%s, last_name=%s, email=%s WHERE id_person =%s'
+            # valores = (
+            #     ('Jhony', 'Renteria', 'jrenteria@mail.com',1),
+            #     ('Pedro', 'Maturana', 'pmaturana@mail.com',2),
+            #     ('Ana', 'Rios', 'arios@mail.com', 3)
+            # )
+            # cursor.executemany(sentencia, valores)
+            # registers = cursor.rowcount
+            # print(f'Registros Actualizados:  {registers}')
+
+            # Eliminar un registros
+            # sentencia = 'DELETE FROM PUBLIC.PERSON WHERE id_person =%s'
+            # valores = '3'
+            # cursor.execute(sentencia, valores)
+            # registers = cursor.rowcount
+            # print(f'Registro Eliminado  :  {registers}')
+
+            # Eliminar varios registros
+            sentencia = 'DELETE FROM PUBLIC.PERSON WHERE id_person IN %s'
+            primary_keys = ((7,8,9),)
+            cursor.execute(sentencia, primary_keys)
             registers = cursor.rowcount
-            print(f'Registros Actualizados:  {registers}')
+            print(f'Registros Eliminados  :  {registers}')
 
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)
